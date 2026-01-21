@@ -1,21 +1,18 @@
 "use client";
 
-import { FormState, editProduct } from "@/app/actions/products";
+import { FormState, createProduct } from "@/app/actions/products";
 import { Submit } from "@/app/components/submit";
-import type { Product } from "@/app/products-db/page";
 import { useActionState, useEffect, useRef } from "react";
 import { useRouter } from "next/navigation";
 
-export default function ProductEditForm({ product }: { product: Product }) {
+export default function AddProductPage() {
   const router = useRouter();
   const initialState: FormState = {
     errors: {},
   };
   const hasSubmittedRef = useRef(false);
 
-  const editProductWithId = editProduct.bind(null, product.id);
-
-  const [state, formAction] = useActionState(editProductWithId, initialState);
+  const [state, formAction] = useActionState(createProduct, initialState);
 
   useEffect(() => {
     // Track if form was submitted
@@ -23,7 +20,7 @@ export default function ProductEditForm({ product }: { product: Product }) {
       hasSubmittedRef.current = true;
     }
 
-    // Redirect to products page after successful update (no errors and form was submitted)
+    // Redirect to products page after successful creation (no errors and form was submitted)
     if (hasSubmittedRef.current && state && state.errors && Object.keys(state.errors).length === 0) {
       const timer = setTimeout(() => {
         router.push("/products-db");
@@ -42,7 +39,6 @@ export default function ProductEditForm({ product }: { product: Product }) {
             type="text"
             className="block w-full p-2 text-black border rounded"
             name="title"
-            defaultValue={product.title}
           />
         </label>
         {state.errors?.title && (
@@ -56,7 +52,6 @@ export default function ProductEditForm({ product }: { product: Product }) {
             type="number"
             className="block w-full p-2 text-black border rounded"
             name="price"
-            defaultValue={product.price}
           />
         </label>
         {state.errors?.price && (
@@ -69,7 +64,6 @@ export default function ProductEditForm({ product }: { product: Product }) {
           <textarea
             className="block w-full p-2 text-black border rounded"
             name="description"
-            defaultValue={product.description ?? ""}
           />
         </label>
         {state.errors?.description && (

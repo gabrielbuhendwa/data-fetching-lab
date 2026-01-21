@@ -4,6 +4,7 @@ import { useOptimistic } from "react";
 import { removeProduct } from "@/app/actions/products";
 import Link from "next/link";
 import Form from "next/form";
+import { useRouter } from "next/navigation";
 
 export type Product = {
   id: number;
@@ -13,6 +14,7 @@ export type Product = {
 };
 
 export const ProductDetail = ({ products }: { products: Product[] }) => {
+  const router = useRouter();
   const [optimisticProducts, setOptimisticProducts] = useOptimistic(
     products,
     (currentProducts, productId) => {
@@ -22,7 +24,14 @@ export const ProductDetail = ({ products }: { products: Product[] }) => {
 
   const removeProductById = async (productId: number) => {
     setOptimisticProducts(productId);
-    await removeProduct(productId);
+    try {
+      await removeProduct(productId);
+      router.refresh();
+    } catch (error) {
+      console.error("Failed to delete product:", error);
+      // Refresh to show original state if delete failed
+      router.refresh();
+    }
   };
 
   return (

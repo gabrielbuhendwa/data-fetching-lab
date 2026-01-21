@@ -1,5 +1,6 @@
 import { getProducts } from "@/app/prisma-db";
 import { ProductDetail } from "./product-detail";
+import SearchForm from "./search-form";
 
 export type Product = {
   id: number;
@@ -16,5 +17,10 @@ export default async function ProductsPrismaDBPage({
   const { query } = await searchParams;
   const products: Product[] = await getProducts(query);
 
-  return <ProductDetail products={products} />;
+  return (
+    <div className="p-4">
+      <SearchForm initialQuery={query} />
+      <ProductDetail products={products} />
+    </div>
+  );
 }
