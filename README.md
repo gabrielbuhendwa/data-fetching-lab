@@ -1,41 +1,32 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Data Fetching Lab (Next.js)
 
-## Getting Started
+A learning-focused project dedicated to exploring modern data fetching patterns and API consumption in Next.js applications.
 
-First, run the development server:
+## Purpose
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+This repository serves as a practical lab to understand how data flows in a Next.js app, including:
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+- Fetching data from external APIs
+- Working with Server Components and Client Components
+- Handling loading, error, and parallel states
+- Exploring different data fetching strategies
+- Understanding where and how data is fetched in a real application
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+This is **not a production-ready project**, but a structured learning space.
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## Tech Stack
 
-## Learn More
+- Next.js (App Router)
+- TypeScript
+- Fetch API
+- Modern React patterns
 
-To learn more about Next.js, take a look at the following resources:
+## Notes
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- Code may evolve as concepts are explored
+- Experiments are intentional and focused on learning
+- Structure reflects real-world scenarios, simplified for clarity
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
-=======
-# data-fetching-lab
-Hands-on experiments with modern data fetching strategies, caching, and asynchronous workflows 
->>>>>>> 15ce5239d1e2131b496c87da0dba1492d7cc2e6f
+Built as part of a continuous learning process.
